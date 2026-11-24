@@ -25,7 +25,7 @@ export function Hero() {
           className="t-overline text-brand-700 flex items-center gap-3"
         >
           <span className="inline-block h-2 w-2 rounded-full bg-brand-500" aria-hidden />
-          Керамический завод дровяного обжига · Таруса
+          Мануфактура «Тарусский художник» · дровяной обжиг · Таруса
         </motion.p>
 
         <motion.h1
@@ -35,7 +35,7 @@ export function Hero() {
         >
           Керамика
           <br />
-          как <span className="text-brand-600">искусство</span>
+          как <span className="text-brand-600">ремесло</span>
         </motion.h1>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-end">
@@ -54,7 +54,7 @@ export function Hero() {
                 <ArrowUpRight className="h-5 w-5" aria-hidden />
               </a>
               <a
-                href="#production"
+                href="#classes"
                 className="inline-flex items-center gap-2 rounded-full border border-line-strong px-7 py-4 text-base font-semibold text-ink transition-colors hover:bg-surface-moderate"
               >
                 Мастер-классы

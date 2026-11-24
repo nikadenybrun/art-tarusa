@@ -10,7 +10,7 @@ const NAV = [
   { href: "#collections", label: "Коллекции" },
   { href: "#process", label: "Процесс" },
   { href: "#gallery", label: "Галерея" },
-  { href: "#events", label: "События" },
+  { href: "#classes", label: "Мастер-классы" },
   { href: "#contact", label: "Контакты" },
 ];
 

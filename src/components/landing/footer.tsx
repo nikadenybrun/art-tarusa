@@ -7,14 +7,13 @@ const NAV = [
   { href: "#collections", label: "Коллекции" },
   { href: "#process", label: "Процесс" },
   { href: "#gallery", label: "Галерея" },
-  { href: "#events", label: "События" },
+  { href: "#classes", label: "Мастер-классы" },
   { href: "#contact", label: "Контакты" },
 ];
 
 const SOCIALS = [
-  { href: "https://t.me/zavodtarusa", label: "Телеграм" },
-  { href: "https://instagram.com/zavodtarusa", label: "Инстаграм" },
-  { href: "https://vk.com/zavodtarusa", label: "ВКонтакте" },
+  { href: "https://t.me/akimov_ceramist", label: "Телеграм-канал Андрея Акимова" },
+  { href: "mailto:hello@zavodtarusa.art", label: "Почта завода" },
 ];
 
 export function Footer() {
@@ -88,15 +87,15 @@ export function Footer() {
           <div className="grid gap-3">
             <p className="t-overline text-neutral-50/50">Производство</p>
             <p className="text-[15px] leading-relaxed text-neutral-50/70 max-w-[30ch]">
-              Полный цикл керамического производства: масса, формовка,
-              глазуровка, обжиг до 1280 °C.
+              Мощность 1 000–1 500 изделий в месяц. Минимальный тираж — от
+              одного изделия, срок заказа — от одного до трёх месяцев.
             </p>
           </div>
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-neutral-800 pt-8">
           <p className="t-caption text-neutral-50/50">
-            © {new Date().getFullYear()} Завод Таруса · Керамический арт-завод
+            © {new Date().getFullYear()} Завод Таруса · Мануфактура «Тарусский художник»
           </p>
           <p className="t-caption text-neutral-50/50 font-grotesk">
             made on clay · zavodtarusa.art

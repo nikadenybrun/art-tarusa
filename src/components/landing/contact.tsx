@@ -8,10 +8,10 @@ import { Reveal } from "./reveal";
 type Status = "idle" | "loading" | "success" | "error";
 
 const TOPICS = [
-  "Сотрудничество",
-  "Заказ тиража",
-  "Резиденция",
-  "Архитектурный проект",
+  "Оптовый заказ — чайные магазины",
+  "Посуда для ресторана",
+  "Мастер-класс",
+  "Интерьерная керамика",
   "Другое",
 ];
 
@@ -67,8 +67,9 @@ export function Contact() {
               Обсудим ваш проект?
             </h2>
             <p className="mt-6 max-w-[42ch] text-base leading-relaxed text-ink-muted">
-              Расскажите о задаче — эскиз, тираж, интерьерный объект или
-              резиденция. Ответим в течение двух рабочих дней.
+              Расскажите о задаче — оптовая партия для магазина, посуда под
+              меню ресторана, мастер-класс или интерьерный объект. Ответим
+              в течение двух рабочих дней.
             </p>
           </Reveal>
 
@@ -95,13 +96,14 @@ export function Contact() {
                 <div>
                   <p className="t-caption text-ink-muted uppercase tracking-[0.12em]">Телеграм</p>
                   <a
-                    href="https://t.me/zavodtarusa"
+                    href="https://t.me/akimov_ceramist"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-1 block text-lg font-semibold font-grotesk link-underline w-fit"
                   >
-                    @zavodtarusa
+                    @akimov_ceramist
                   </a>
+                  <p className="mt-1 t-caption text-ink-muted">канал керамиста Андрея Акимова</p>
                 </div>
               </li>
               <li className="flex items-start gap-4">
@@ -213,7 +215,7 @@ export function Contact() {
                     minLength={10}
                     maxLength={2000}
                     rows={6}
-                    placeholder="Что хотите сделать: объект, тираж, серия, резиденция? Есть ли референсы и сроки?"
+                    placeholder="Что хотите сделать: партия чайников для магазина, посуда под меню ресторана или мастер-класс для команды? Есть ли референсы и сроки?"
                     className="rounded-xl border border-input bg-background px-4 py-3 text-base outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 placeholder:text-ink-disabled resize-y"
                   />
                 </div>
