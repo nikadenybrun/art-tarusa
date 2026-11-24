@@ -1,0 +1,247 @@
+@import "./fonts.css";
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   Завод Таруса — design tokens (tokensTarusa.json / DTCG)
+   Veritheme "custom-theme": warm cream surfaces, ink text,
+   golden brand (#e7b008), Space Grotesk + Manrope
+   ============================================================ */
+
+@theme inline {
+  /* shadcn/ui compatibility layer */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* brand scale */
+  --color-brand-50: #f9f4eb;
+  --color-brand-100: #f8eedd;
+  --color-brand-200: #f8e2bf;
+  --color-brand-300: #f7d097;
+  --color-brand-400: #f2be63;
+  --color-brand-500: #e7b008;
+  --color-brand-600: #b89000;
+  --color-brand-700: #997800;
+  --color-brand-800: #755e00;
+  --color-brand-900: #614c00;
+  --color-brand-950: #332800;
+
+  /* neutral scale (warm grey) */
+  --color-neutral-50: #fbf9f4;
+  --color-neutral-100: #f6f4ee;
+  --color-neutral-200: #e5e3dc;
+  --color-neutral-300: #cfccc4;
+  --color-neutral-400: #98958b;
+  --color-neutral-500: #6d6a5f;
+  --color-neutral-600: #4d4a42;
+  --color-neutral-700: #3d3b33;
+  --color-neutral-800: #25231e;
+  --color-neutral-900: #171612;
+  --color-neutral-950: #0c0b08;
+
+  /* danger (from tokens) */
+  --color-danger-fill: #ef4343;
+  --color-danger-surface: #fef1f1;
+  --color-danger-border: #fec8c8;
+
+  /* surfaces & borders (semantic, from tokens) */
+  --color-surface-page: #fbf9f4;
+  --color-surface-card: #ffffff;
+  --color-surface-subtle: #f6f4ee;
+  --color-surface-moderate: #e5e3dc;
+  --color-surface-strong: #cfccc4;
+  --color-ink: #0c0b08;
+  --color-ink-soft: #25231e;
+  --color-ink-muted: #4d4a42;
+  --color-ink-disabled: #6d6a5f;
+  --color-line: #e5e3dc;
+  --color-line-strong: #cfccc4;
+
+  /* radii (tokens: radius scale) */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-4xl: 32px;
+
+  /* shadows (warm-toned, from tokens) */
+  --shadow-xs: 0px 1px 2px rgba(50, 44, 27, 0.05);
+  --shadow-sm: 0px 1px 3px rgba(50, 44, 27, 0.1), 0px 1px 2px -1px rgba(50, 44, 27, 0.1);
+  --shadow-md: 0px 4px 6px -1px rgba(50, 44, 27, 0.1), 0px 2px 4px -2px rgba(50, 44, 27, 0.06);
+  --shadow-lg: 0px 12px 16px -4px rgba(50, 44, 27, 0.08), 0px 4px 6px -2px rgba(50, 44, 27, 0.03), 0px 2px 2px -1px rgba(50, 44, 27, 0.04);
+  --shadow-xl: 0px 20px 24px -4px rgba(50, 44, 27, 0.08), 0px 8px 8px -4px rgba(50, 44, 27, 0.03), 0px 3px 3px -1.5px rgba(50, 44, 27, 0.04);
+  --shadow-2xl: 0px 24px 48px -12px rgba(50, 44, 27, 0.18), 0px 4px 4px -2px rgba(50, 44, 27, 0.04);
+  --shadow-3xl: 0px 32px 64px -12px rgba(50, 44, 27, 0.14), 0px 5px 5px -2.5px rgba(50, 44, 27, 0.04);
+
+  /* fonts: Manrope — кириллица, Space Grotesk — латиница/цифры (из токенов) */
+  --font-sans: "Manrope", "Space Grotesk", system-ui, sans-serif;
+  --font-grotesk: "Space Grotesk", "Manrope", system-ui, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, monospace;
+}
+
+:root {
+  --background: #fbf9f4;
+  --foreground: #0c0b08;
+  --card: #ffffff;
+  --card-foreground: #0c0b08;
+  --popover: #ffffff;
+  --popover-foreground: #0c0b08;
+  --primary: #0c0b08;
+  --primary-foreground: #fbf9f4;
+  --secondary: #f6f4ee;
+  --secondary-foreground: #0c0b08;
+  --muted: #f6f4ee;
+  --muted-foreground: #4d4a42;
+  --accent: #f8eedd;
+  --accent-foreground: #332800;
+  --destructive: #dc2828;
+  --destructive-foreground: #ffffff;
+  --border: #e5e3dc;
+  --input: #e5e3dc;
+  --ring: #e7b008;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: #e7b008;
+    color: #0c0b08;
+  }
+}
+
+@layer components {
+  /* — Typography styles from tokens (Manrope for кириллица) — */
+  .t-overline {
+    font-family: var(--font-grotesk);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.33;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .t-caption {
+    font-size: 12px;
+    line-height: 1.33;
+  }
+  .t-heading-sm {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.33;
+    letter-spacing: -0.02em;
+  }
+  .t-heading-md {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .t-heading-lg {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.17;
+    letter-spacing: -0.02em;
+  }
+  .t-display-sm {
+    font-size: clamp(44px, 6vw, 60px);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+  .t-display-md {
+    font-size: clamp(52px, 7.5vw, 72px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+  }
+  .t-display-lg {
+    font-size: clamp(56px, 9vw, 96px);
+    font-weight: 600;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+  }
+
+  /* — Layout helpers — */
+  .container-t {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12;
+  }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: background-size 0.3s ease;
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+}
+
+/* — Marquee ticker — */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 36s linear infinite;
+}
+
+/* — Dark section scrollbar + gallery scrollbar styling — */
+.gallery-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #cfccc4 #f6f4ee;
+}
+.gallery-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.gallery-scroll::-webkit-scrollbar-track {
+  background: #f6f4ee;
+  border-radius: 9999px;
+}
+.gallery-scroll::-webkit-scrollbar-thumb {
+  background: #cfccc4;
+  border-radius: 9999px;
+}
+.gallery-scroll::-webkit-scrollbar-thumb:hover {
+  background: #98958b;
+}
