@@ -2,10 +2,10 @@ import Image from "next/image";
 import { Reveal } from "./reveal";
 
 const STATS = [
-  { value: "70", suffix: "%", label: "выручки даёт чайная посуда — основное направление завода" },
-  { value: "1 500", suffix: "шт", label: "изделий в месяц — производственная мощность цеха" },
-  { value: "от 1", suffix: "шт", label: "минимальный тираж: от единичного изделия до крупных партий" },
-  { value: "1–3", suffix: "мес", label: "срок исполнения заказа от эскиза до готовой партии" },
+  { value: "от 1", suffix: "шт", label: "минимальный тираж — от единичного изделия до крупных партий" },
+  { value: "50–150", suffix: "шт", label: "стандартная партия для чайного магазина или клуба" },
+  { value: "до 1\u00A0500", suffix: "шт", label: "изделий в месяц — хватит на сетевые заказы и повторные партии" },
+  { value: "1–3", suffix: "мес", label: "срок исполнения заказа — от эскиза до готовой партии" },
 ];
 
 export function About() {
@@ -45,32 +45,31 @@ export function About() {
             <div className="mt-8 grid gap-6 max-w-[62ch] text-base leading-relaxed text-ink-muted sm:text-lg">
               <p>
                 Мануфактура «Тарусский художник» выросла из чайной
-                компании: после пожара на Электрозаводе мастерская
-                переехала из Москвы в Тарусу и уже полтора года занимает
-                400 м² на заводе «Тарусская керамика». Производство ведёт
-                керамист Андрей Акимов — более десяти лет за гончарным
-                кругом.
+                компании: мы сами пьём чай каждый день и знаем, каким
+                должен быть чайник. Завод работает в Тарусе — формовка,
+                глазури и дровяной обжиг на одной площадке. Производство
+                ведёт керамист Андрей Акимов, более десяти лет за
+                гончарным кругом.
               </p>
               <p>
-                В 2023–2025 годах завод отгружал от 1 000 до 5 000 изделий
-                ежемесячно, а годовой розничный оборот достигал 20 млн
-                рублей. Среди постоянных заказчиков — чайные клубы CHABU и
-                рестораны White Rabbit Family. Мы проверяем чайники в
-                работе до того, как они покидают завод: слив, струя,
-                прилегание крышки.
+                Среди постоянных заказчиков — чайные клубы CHABU и
+                рестораны White Rabbit Family. Каждый чайник перед
+                отгрузкой проверяем в работе — слив, струя, прилегание
+                крышки: вы получаете посуду, которая не подводит на
+                смене и на церемонии.
               </p>
             </div>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4">
+          <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
             {STATS.map((s, i) => (
               <Reveal key={s.label} delay={0.06 * i} className="bg-surface-card">
                 <div className="flex h-full flex-col justify-between gap-6 p-6">
-                  <div className="font-grotesk text-4xl font-semibold tracking-tight text-ink">
+                  <div className="font-grotesk text-4xl font-semibold tracking-tight text-ink whitespace-nowrap">
                     {s.value}
                     <span className="text-brand-600">{s.suffix}</span>
                   </div>
-                  <p className="t-caption text-ink-muted max-w-[18ch]">{s.label}</p>
+                  <p className="t-caption text-ink-muted max-w-[24ch]">{s.label}</p>
                 </div>
               </Reveal>
             ))}
