@@ -4,40 +4,40 @@ import { Reveal } from "./reveal";
 
 const COLLECTIONS = [
   {
-    name: "Пепел и молоко",
+    name: "Чайник «Таруса»",
     year: "2025",
-    tag: "Тираж + артефакты",
-    desc: "Молочные глазури поверх тёмного шамота: посуда, которая выглядит как найденная на берегу Оки.",
-    img: "/images/collection-3.jpg",
-    alt: "Минималистичные белые керамические сосуды на бежевом фоне",
+    tag: "Чайная посуда",
+    desc: "Основная серия завода: плотный шамот, широкое горло, стабильный пролив. Дровяная печь даёт каждому чайнику свой оттенок глазури — одинаковых нет.",
+    img: "/images/tea-1.jpg",
+    alt: "Чайник дровяного обжига с бежево-зелёной глазурью на фоне мха",
     span: "lg:col-span-7",
     h: "h-[420px]",
   },
   {
-    name: "Орех и зола",
+    name: "Ресторанная партия",
     year: "2025",
     tag: "Тиражные изделия",
-    desc: "Плотные коричневые глазури для ресторанных сетей.",
-    img: "/images/collection-4.jpg",
-    alt: "Коричневые глазурованные тарелки на деревянном столе",
+    desc: "Тарелки и соусники для завтраков и подачи — партия с контролем веса и диаметра.",
+    img: "/images/collection-1.jpg",
+    alt: "Набор кремово-золотых тарелок ручной работы",
     span: "lg:col-span-5",
     h: "h-[420px]",
   },
   {
-    name: "Форма и воздух",
+    name: "Мини-чайники",
     year: "2024",
-    tag: "Скульптурные объекты",
-    desc: "Ажурные сосуды с кольцевыми вырезами — серия для интерьера.",
-    img: "/images/hero-square.jpg",
-    alt: "Белые керамические сосуды с кольцевыми вырезами и сухоцветами",
+    tag: "Чайные магазины",
+    desc: "Компактная серия для персональных чаепитий и подарочных наборов.",
+    img: "/images/tea-6.jpg",
+    alt: "Миниатюрный чайник дровяного обжига с песочной глазурью",
     span: "lg:col-span-5",
     h: "h-[380px]",
   },
   {
-    name: "Сад",
+    name: "Глазури огня",
     year: "2024",
-    tag: "Артефакты",
-    desc: "Цветочная глазурь налита слоями — у каждого объекта свой рисунок.",
+    tag: "Дровяной обжиг",
+    desc: "Экспериментальная серия: цветочная глазурь налита слоями — у каждого предмета свой рисунок пламени.",
     img: "/images/gallery-4.jpg",
     alt: "Яркий оранжевый керамический цветок с глазурью",
     span: "lg:col-span-7",
@@ -53,17 +53,17 @@ export function Collections() {
           <div>
             <p className="t-overline text-brand-700 flex items-center gap-3">
               <span className="inline-block h-2 w-2 rounded-full bg-brand-500" aria-hidden />
-              Коллекции
+              Серии и партии
             </p>
             <h2 id="collections-title" className="t-heading-md mt-5 max-w-[22ch]">
-              Серии, выпущенные заводом
+              Что выходит из нашей печи
             </h2>
           </div>
           <a
             href="#contact"
             className="inline-flex items-center gap-2 rounded-full border border-line-strong px-6 py-3 text-[15px] font-semibold transition-colors hover:bg-surface-moderate"
           >
-            Запросить каталог
+            Запросить оптовый прайс
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </a>
         </Reveal>

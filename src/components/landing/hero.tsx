@@ -25,7 +25,7 @@ export function Hero() {
           className="t-overline text-brand-700 flex items-center gap-3"
         >
           <span className="inline-block h-2 w-2 rounded-full bg-brand-500" aria-hidden />
-          Керамический арт-завод · Таруса
+          Керамический завод дровяного обжига · Таруса
         </motion.p>
 
         <motion.h1
@@ -39,44 +39,43 @@ export function Hero() {
         </motion.h1>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-end">
-          <motion.div {...v(0.16)} className="lg:col-span-5">
+          <motion.div {...v(0.16)} className="lg:col-span-6">
             <p className="text-lg leading-relaxed text-ink-muted max-w-[46ch]">
-              Завод Таруса — производство авторской керамики полного цикла:
-              от эскиза художника до обжига при 1280&nbsp;°C. Артефакты,
-              скульптурные объекты и тиражные изделия для галерей,
-              архитекторов и брендов.
+              Посуда дровяного обжига для чайных магазинов, ресторанов и
+              мастер-классов. Чайники, пиалы и тиражные партии — от эскиза
+              до печи, в которой каждый чайник получает свой рисунок огня.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href="#collections"
                 className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-4 text-base font-semibold text-neutral-50 transition-colors hover:bg-brand-500 hover:text-ink"
               >
-                Смотреть коллекции
+                Смотреть посуду
                 <ArrowUpRight className="h-5 w-5" aria-hidden />
               </a>
               <a
-                href="#about"
+                href="#production"
                 className="inline-flex items-center gap-2 rounded-full border border-line-strong px-7 py-4 text-base font-semibold text-ink transition-colors hover:bg-surface-moderate"
               >
-                О заводе
+                Мастер-классы
                 <ArrowDown className="h-5 w-5" aria-hidden />
               </a>
             </div>
           </motion.div>
 
-          <motion.div {...v(0.24)} className="lg:col-span-7">
+          <motion.div {...v(0.24)} className="lg:col-span-6">
             <div className="relative overflow-hidden rounded-3xl shadow-lg bg-surface-subtle">
               <Image
-                src="/images/hero-wide.jpg"
-                alt="Тёмный керамический сосуд ручной работы на бежевом фоне"
-                width={1920}
-                height={980}
+                src="/images/tea-2.jpg"
+                alt="Чайник дровяного обжига ручной работы на фоне мха и бежевой стены"
+                width={600}
+                height={800}
                 priority
-                className="h-auto w-full object-cover aspect-[1920/980]"
+                className="h-auto w-full object-cover aspect-[600/800]"
               />
               <div className="absolute bottom-4 left-4 rounded-full bg-neutral-50/90 backdrop-blur px-4 py-2">
                 <span className="t-caption font-grotesk font-medium tracking-[0.12em] uppercase text-ink-soft">
-                  Объект «Сосуд 04» · глазурованный шамот
+                  Чайник дровяного обжига · шамот, глазури огня
                 </span>
               </div>
             </div>
