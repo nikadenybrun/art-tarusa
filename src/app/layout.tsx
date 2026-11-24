@@ -22,7 +22,8 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Завод Таруса" }],
   icons: {
-    icon: "/logo.svg",
+    // NEXT_PUBLIC_BASE_PATH подставляется при экспорте для GitHub Pages
+    icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo.svg`,
   },
   openGraph: {
     title: "Завод Таруса — керамический арт-завод",

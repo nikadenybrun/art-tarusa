@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 
 const contactSchema = z.object({
   name: z
@@ -27,6 +27,58 @@ const contactSchema = z.object({
     .max(2000, "Сообщение слишком длинное"),
 });
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+// Отправка заявки в Telegram владельцу. Включается автоматически, если заданы
+// переменные окружения TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID (прод-хостинг).
+async function sendToTelegram(data: {
+  name: string;
+  email: string;
+  topic: string;
+  message: string;
+}): Promise<boolean> {
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!token || !chatId) return false;
+
+  const text = [
+    "<b>Новая заявка · zavodtarusa.art</b>",
+    "",
+    `<b>Тема:</b> ${escapeHtml(data.topic)}`,
+    `<b>Имя:</b> ${escapeHtml(data.name)}`,
+    `<b>Почта:</b> ${escapeHtml(data.email)}`,
+    "",
+    escapeHtml(data.message),
+  ].join("\n");
+
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text,
+        parse_mode: "HTML",
+        disable_web_page_preview: true,
+      }),
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!res.ok) {
+      console.error("Telegram API error:", res.status);
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.error("Telegram sendMessage failed:", error);
+    return false;
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -40,16 +92,37 @@ export async function POST(request: Request) {
       );
     }
 
-    const saved = await db.contactRequest.create({
-      data: {
-        name: parsed.data.name,
-        email: parsed.data.email,
-        topic: parsed.data.topic,
-        message: parsed.data.message,
-      },
-    });
+    // 1) Telegram-уведомление (прод). Не заданы переменные — шаг пропускается.
+    const notified = await sendToTelegram(parsed.data);
 
-    return NextResponse.json({ ok: true, id: saved.id }, { status: 201 });
+    // 2) Запись в SQLite (локальный запуск). На хостинге запись в файл
+    //    недоступна — это не считается ошибкой, заявка уже ушла в Telegram.
+    let savedId: string | null = null;
+    try {
+      const saved = await getDb().contactRequest.create({
+        data: {
+          name: parsed.data.name,
+          email: parsed.data.email,
+          topic: parsed.data.topic,
+          message: parsed.data.message,
+        },
+      });
+      savedId = saved.id;
+    } catch (dbError) {
+      console.error("DB save skipped (expected on hosting):", dbError);
+    }
+
+    if (!notified && !savedId) {
+      return NextResponse.json(
+        { ok: false, error: "Сервер не отвечает. Попробуйте позже." },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json(
+      { ok: true, id: savedId ?? "telegram" },
+      { status: 201 }
+    );
   } catch (error) {
     console.error("POST /api/contact failed:", error);
     return NextResponse.json(
